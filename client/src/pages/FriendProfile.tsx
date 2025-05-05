@@ -3,6 +3,8 @@ import { musicData } from "@/data/musicData";
 import ProfileHeader from "@/components/ProfileHeader";
 import TopArtists from "@/components/TopArtists";
 import ExplorationZones from "@/components/ExplorationZones"; // optional
+import DropDownMenu from "@/components/DropDownMenu";
+
 
 export default function FriendProfile() {
   const [, params] = useRoute<{ id: string }>("/profile/:id");
@@ -29,6 +31,7 @@ export default function FriendProfile() {
 
   return (
     <div className="bg-gray-900 min-h-screen">
+    <DropDownMenu />
       <ProfileHeader
         username={friend.username}
         profileImage={friend.profileImage}
