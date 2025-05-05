@@ -175,15 +175,24 @@ export default function ExplorationDetail() {
                     (zoneName === "Abyss" && (artistZone === "Abyss" || usersToDisplay.indexOf(user) >= 3))
                   )
                   .map((user, userIndex) => {
-                    // Position users in a semi-circle
+                    // Position users in a semi-circle along the bottom part of the zone
+                    // This ensures they don't overlap with the zone titles at the center
                     const totalUsers = zoneName === artistZone && artistZone !== "Abyss" ? 3 : 
                                       (zoneName === "Abyss" && artistZone !== "Abyss" ? 3 : 5);
-                    const angle = (userIndex / (totalUsers - 1)) * 180;
-                    const radius = 40; // percentage of the zone width
+                    
+                    // Use a wider angle range (120 degrees instead of 180) 
+                    // and offset it to keep users in the bottom half of the zone
+                    const angleStart = 30; // Start at 30 degrees
+                    const angleEnd = 150; // End at 150 degrees
+                    const angle = angleStart + (userIndex / (totalUsers - 1)) * (angleEnd - angleStart);
+                    
+                    // Keep the radius the same but position users in bottom portion
+                    const radius = 35; // slightly smaller percentage of the zone width
                     
                     // Convert polar coordinates to cartesian
+                    // Adjust y position to be in bottom 70% of the zone
                     const x = 50 - radius * Math.cos(angle * Math.PI / 180);
-                    const y = 50;
+                    const y = 65; // Position in bottom part of zone instead of center
                     
                     // Animation for abyss users
                     const animation = zoneName === "Abyss" ? "animate-pulse" : "";
@@ -194,14 +203,14 @@ export default function ExplorationDetail() {
                         className={`absolute ${animation}`}
                         style={{ 
                           left: `${x}%`, 
-                          top: '50%',
+                          top: `${y}%`,
                           transform: 'translate(-50%, -50%)'
                         }}
                       >
                         <img 
                           src={user.profileImage}
                           alt={user.username}
-                          className="h-12 w-12 rounded-full border-2 border-white shadow-lg"
+                          className="h-10 w-10 rounded-full border-2 border-white shadow-lg"
                           title={user.username}
                         />
                         <div className="text-xs text-center mt-1 font-medium text-white bg-black bg-opacity-50 px-2 py-0.5 rounded">

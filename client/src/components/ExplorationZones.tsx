@@ -55,10 +55,17 @@ export default function ExplorationZones() {
             {(zoneArtists[index] || []).map((artist, artistIndex) => {
               if (!artist) return null;
               
-              // Dynamic positioning based on index
-              const positionStyle = artistIndex % 2 === 0 
-                ? { right: `${10 + artistIndex * 5}%` } 
-                : { left: `${10 + (artistIndex-1) * 5}%` };
+              // Position artists to the sides and bottom of each zone
+              // This ensures they don't overlap with zone titles in the center
+              const positions = [
+                { right: '15%', top: '65%' },
+                { left: '15%', top: '65%' },
+                { right: '30%', top: '65%' },
+                { left: '30%', top: '65%' }
+              ];
+              
+              // Use one of the predefined positions 
+              const positionStyle = positions[artistIndex % positions.length];
               
               // Size increases for deeper zones
               const size = index >= 4 ? "h-16 w-16" : "h-14 w-14";
@@ -71,7 +78,7 @@ export default function ExplorationZones() {
                   key={artist.id}
                   src={artist.imageUrl}
                   alt={artist.name}
-                  className={`absolute ${size} rounded-full top-1/2 transform -translate-y-1/2 border-2 border-white shadow-lg ${animation} cursor-pointer`}
+                  className={`absolute ${size} rounded-full border-2 border-white shadow-lg ${animation} cursor-pointer`}
                   style={positionStyle}
                   title={artist.name}
                   onClick={() => setLocation(`/exploration/${artist.id}`)}
