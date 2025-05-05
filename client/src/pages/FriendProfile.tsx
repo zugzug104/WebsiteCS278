@@ -40,7 +40,7 @@ export default function FriendProfile() {
       />
       <main className="max-w-md mx-auto px-4 pb-16">
         <TopArtists artists={friend.topArtists} />
-        <ExplorationZones /> {/* Can later be passed friend-specific zones */}
+        <ExplorationZones artists={friend.topArtists} />
       </main>
     </div>
   );

@@ -9,7 +9,11 @@ type Artist = {
   imageUrl: string;
 };
 
-export default function ExplorationZones() {
+type Props = {
+  artists?: Artist[];
+};
+
+export default function ExplorationZones({ artists }: Props) {
   const [, setLocation] = useLocation();
 
   const zones = [
@@ -22,13 +26,14 @@ export default function ExplorationZones() {
 
   function getZoneForScrobbles(scrobbles: number) {
     if (scrobbles <= 200) return "Beach Zone";
-    if (scrobbles <= 500) return "Sunlight Zone";
-    if (scrobbles <= 800) return "Twilight Zone";
-    if (scrobbles <= 1000) return "Midnight Zone";
+    if (scrobbles <= 400) return "Sunlight Zone";
+    if (scrobbles <= 600) return "Twilight Zone";
+    if (scrobbles <= 900) return "Midnight Zone";
     return "Abyss";
   }
 
-  const topArtists = musicData.topArtists;
+  // Use passed-in artists if provided, otherwise default to main user
+  const topArtists = artists ?? musicData.topArtists;
 
   const groupedByZone: Record<string, Artist[]> = {
     "Beach Zone": [],
@@ -42,6 +47,7 @@ export default function ExplorationZones() {
     const zone = getZoneForScrobbles(artist.scrobbles);
     groupedByZone[zone].push(artist);
   });
+
 
   return (
     <section className="mb-12">

@@ -15,7 +15,9 @@ type Props = {
 };
 
 export default function TopArtists({ artists }: Props) {
-  const topArtists = artists ?? musicData.topArtists;
+  const topArtists = (artists ?? musicData.topArtists)
+  .slice()
+  .sort((a, b) => b.scrobbles - a.scrobbles);
   const [, navigate] = useLocation();
 
   return (
