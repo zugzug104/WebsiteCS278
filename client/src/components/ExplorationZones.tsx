@@ -1,4 +1,5 @@
 import { musicData } from "@/data/musicData";
+import { useLocation } from "wouter";
 
 // Define types for future API integration
 type Artist = {
@@ -16,6 +17,8 @@ type ExplorationZone = {
 };
 
 export default function ExplorationZones() {
+  const [, navigate] = useLocation();
+  
   const zones = [
     { name: "Beach Zone", color: "from-[#F8E9CB] to-[#FFB740]", textColor: "text-gray-800" },
     { name: "Sunlight Zone", color: "from-[#FFB740] to-[#9370DB]", textColor: "text-gray-800" },
@@ -68,9 +71,10 @@ export default function ExplorationZones() {
                   key={artist.id}
                   src={artist.imageUrl}
                   alt={artist.name}
-                  className={`absolute ${size} rounded-full top-1/2 transform -translate-y-1/2 border-2 border-white shadow-lg ${animation}`}
+                  className={`absolute ${size} rounded-full top-1/2 transform -translate-y-1/2 border-2 border-white shadow-lg ${animation} cursor-pointer`}
                   style={positionStyle}
                   title={artist.name}
+                  onClick={() => navigate(`/artist/${artist.id}`)}
                 />
               );
             })}

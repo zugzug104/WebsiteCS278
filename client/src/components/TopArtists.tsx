@@ -1,5 +1,6 @@
 import { ChevronRightIcon } from "lucide-react";
 import { musicData } from "@/data/musicData";
+import { useLocation } from "wouter";
 
 // Define types for future API integration
 type Artist = {
@@ -11,6 +12,7 @@ type Artist = {
 
 export default function TopArtists() {
   const topArtists = musicData.topArtists;
+  const [, navigate] = useLocation();
   
   return (
     <section className="mb-10">
@@ -37,7 +39,7 @@ export default function TopArtists() {
               </div>
               <button 
                 className="text-gray-400 hover:text-white"
-                onClick={() => alert(`Viewing details for ${artist.name}`)}
+                onClick={() => navigate(`/artist/${artist.id}`)}
                 aria-label={`View ${artist.name} details`}
               >
                 <ChevronRightIcon className="h-5 w-5" />
