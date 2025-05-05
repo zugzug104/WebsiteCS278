@@ -184,17 +184,18 @@ export default function ExplorationDetail() {
                     
                     if (zoneName === "Abyss") {
                       // Position all 3 users in the Abyss zone horizontally
+                      // Moving the right-side profiles further to the right
                       positions = [
                         { left: '15%', top: '50%' },
-                        { right: '15%', top: '50%' },
-                        { right: '35%', top: '50%' },
+                        { right: '10%', top: '50%' },  // Further right
+                        { right: '30%', top: '50%' },  // Further right
                       ];
                     } else {
                       // For other zones - similar horizontal layout
                       positions = [
-                        { left: '20%', top: '50%' },
-                        { right: '20%', top: '50%' },
-                        { right: '40%', top: '50%' },
+                        { left: '15%', top: '50%' },
+                        { right: '10%', top: '50%' },  // Further right
+                        { right: '30%', top: '50%' },  // Further right
                       ];
                     }
                     
@@ -216,7 +217,7 @@ export default function ExplorationDetail() {
                           className="h-10 w-10 rounded-full border-2 border-white shadow-lg"
                           title={user.username}
                         />
-                        <div className="text-xs text-center mt-1 font-medium text-white bg-black bg-opacity-50 px-2 py-0.5 rounded">
+                        <div className="text-xs text-center mt-1 font-medium text-white bg-black bg-opacity-70 px-2 py-0.5 rounded-md">
                           {user.username}
                         </div>
                       </div>
