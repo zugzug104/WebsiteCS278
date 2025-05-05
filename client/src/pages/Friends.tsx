@@ -50,12 +50,13 @@ export default function Friends() {
                   <div className="text-gray-400 text-sm">{friend.scrobbles.toLocaleString()} scrobbles</div>
                 </div>
                 <button
-                  className="text-gray-400 hover:text-white"
-                  onClick={() => setLocation(`/exploration/${friend.id}`)}
-                  aria-label={`View ${friend.username} details`}
+                    className="text-gray-400 hover:text-white"
+                    onClick={() => setLocation(`/profile/${friend.id}`)}
+                    aria-label={`View ${friend.username} profile`}
                 >
-                  <ChevronRightIcon className="h-5 w-5" />
+                <ChevronRightIcon className="h-5 w-5" />
                 </button>
+
               </div>
             </div>
           ))}
