@@ -17,7 +17,7 @@ type ExplorationZone = {
 };
 
 export default function ExplorationZones() {
-  const [, navigate] = useLocation();
+  const [, setLocation] = useLocation();
   
   const zones = [
     { name: "Beach Zone", color: "from-[#F8E9CB] to-[#FFB740]", textColor: "text-gray-800" },
@@ -74,7 +74,7 @@ export default function ExplorationZones() {
                   className={`absolute ${size} rounded-full top-1/2 transform -translate-y-1/2 border-2 border-white shadow-lg ${animation} cursor-pointer`}
                   style={positionStyle}
                   title={artist.name}
-                  onClick={() => navigate(`/artist/${artist.id}`)}
+                  onClick={() => setLocation(`/exploration/${artist.id}`)}
                 />
               );
             })}
