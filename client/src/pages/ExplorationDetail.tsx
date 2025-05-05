@@ -115,10 +115,10 @@ export default function ExplorationDetail() {
   // Get users for the current zone and abyss zone
   const currentZoneUsers = zoneUsers[artistZone];
   
-  // If already in abyss, show 5 abyss users, otherwise show 3 from current zone and 3 from abyss
+  // Only show 3 users from the current zone and/or Abyss
   const usersToDisplay = artistZone === "Abyss" 
-    ? zoneUsers["Abyss"] 
-    : [...currentZoneUsers, ...zoneUsers["Abyss"].slice(0, 3)];
+    ? zoneUsers["Abyss"].slice(0, 3)
+    : [...currentZoneUsers.slice(0, 3), ...zoneUsers["Abyss"].slice(0, 3)];
   
   // Calculate rankings between 70-90%
   const explorationRanking = Math.floor(Math.random() * 20) + 70;
@@ -178,27 +178,24 @@ export default function ExplorationDetail() {
                     // Position users along the sides of the zone
                     // This ensures they don't overlap with zone titles
                     
-                    // Different positioning strategy based on which zone we're in
+                    // Simplified positioning strategy with just 3 positions per zone
+                    // These positions are carefully chosen to avoid overlapping zone titles
+                    // and to ensure all profiles stay within the screen boundaries
                     let positions;
                     
-                    if (zoneName === "Abyss" && artistZone === "Abyss") {
-                      // If we're in Abyss with 5 users, use evenly spaced positions
-                      positions = [
-                        { left: '15%', top: '25%' },
-                        { right: '15%', top: '25%' },
-                        { left: '25%', top: '75%' },
-                        { right: '25%', top: '75%' },
-                        { left: '50%', top: '75%' },
-                      ];
-                    } else {
-                      // For other zones or when showing mix of abyss+current zone
+                    if (zoneName === "Abyss") {
+                      // Position the 3 users in the Abyss zone in a triangular pattern
                       positions = [
                         { left: '20%', top: '30%' },
                         { right: '20%', top: '30%' },
-                        { left: '25%', top: '70%' },
-                        { right: '25%', top: '70%' },
-                        { left: '40%', top: '70%' },
-                        { right: '40%', top: '70%' },
+                        { left: '50%', top: '70%' },
+                      ];
+                    } else {
+                      // For other zones
+                      positions = [
+                        { left: '25%', top: '30%' },
+                        { right: '25%', top: '30%' },
+                        { left: '50%', top: '70%' },
                       ];
                     }
                     
