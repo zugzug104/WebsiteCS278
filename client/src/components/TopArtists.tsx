@@ -1,7 +1,17 @@
 import { ChevronRightIcon } from "lucide-react";
 import { musicData } from "@/data/musicData";
 
+// Define types for future API integration
+type Artist = {
+  id: number;
+  name: string;
+  scrobbles: number;
+  imageUrl: string;
+};
+
 export default function TopArtists() {
+  const topArtists = musicData.topArtists;
+  
   return (
     <section className="mb-10">
       <h2 className="text-center text-xl font-semibold text-white mb-2">Top Artists</h2>
@@ -10,8 +20,8 @@ export default function TopArtists() {
       </p>
       
       <div className="bg-gray-800 rounded-xl overflow-hidden">
-        {musicData.topArtists.map((artist, index) => (
-          <div key={artist.id} className={`flex items-center p-4 ${index < musicData.topArtists.length - 1 ? 'border-b border-gray-700' : ''}`}>
+        {topArtists.map((artist, index) => (
+          <div key={artist.id} className={`flex items-center p-4 ${index < topArtists.length - 1 ? 'border-b border-gray-700' : ''}`}>
             <div className="flex items-center w-8">
               <span className="font-bold text-white">{index + 1}</span>
             </div>
