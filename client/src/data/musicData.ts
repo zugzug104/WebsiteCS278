@@ -67,5 +67,50 @@ export const musicData = {
       scrobbles: 1289,
       profileImage: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=100&h=100"
     }
+  ],
+  friends: [
+    {
+      id: 101,
+      username: "@musiclover42",
+      swag: 220,
+      scrobbles: 2105,
+      profileImage: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=100&h=100",
+      topArtists: [
+        {
+          id: 201,
+          name: "Doja Cat",
+          scrobbles: 900,
+          imageUrl: "https://ca-times.brightspotcdn.com/dims4/default/e9e83cc/2147483647/strip/true/crop/3250x1828+0+12/resize/1200x675!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F5f%2Ffb%2Fbc575c30444f8c1ce5e6f6980194%2F2023-time100-gala-73445.jpg"
+        },
+        {
+          id: 202,
+          name: "SZA",
+          scrobbles: 870,
+          imageUrl: "https://ntvb.tmsimg.com/assets/assets/1027990_v9_bc.jpg"
+        }
+      ]
+    },
+    {
+      id: 102,
+      username: "@beatmaster",
+      swag: 180,
+      scrobbles: 1876,
+      profileImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=100&h=100",
+      topArtists: [
+        {
+          id: 201,
+          name: "Doja Cat",
+          scrobbles: 900,
+          imageUrl: "https://ca-times.brightspotcdn.com/dims4/default/e9e83cc/2147483647/strip/true/crop/3250x1828+0+12/resize/1200x675!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F5f%2Ffb%2Fbc575c30444f8c1ce5e6f6980194%2F2023-time100-gala-73445.jpg"
+        },
+        {
+          id: 202,
+          name: "SZA",
+          scrobbles: 870,
+          imageUrl: "https://ntvb.tmsimg.com/assets/assets/1027990_v9_bc.jpg"
+        }
+      ]
+    }
+    // etc.
   ]
 };

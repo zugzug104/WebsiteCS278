@@ -10,10 +10,14 @@ type Artist = {
   imageUrl: string;
 };
 
-export default function TopArtists() {
-  const topArtists = musicData.topArtists;
+type Props = {
+  artists?: Artist[];
+};
+
+export default function TopArtists({ artists }: Props) {
+  const topArtists = artists ?? musicData.topArtists;
   const [, navigate] = useLocation();
-  
+
   return (
     <section className="mb-10">
       <h2 className="text-center text-xl font-semibold text-white mb-2">Top Artists</h2>

@@ -5,7 +5,8 @@ import { musicData } from "@/data/musicData";
 export default function Friends() {
   const [, setLocation] = useLocation();
 
-  const topListeners = musicData.topListeners; // Using topListeners for now
+  const friends = musicData.friends;
+  
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-6">
@@ -29,11 +30,11 @@ export default function Friends() {
 
         {/* Friends List */}
         <div className="bg-gray-800 rounded-xl overflow-hidden">
-          {topListeners.map((friend, index) => (
+          {friends.map((friend, index) => (
             <div
               key={friend.id}
               className={`flex items-center p-4 ${
-                index < topListeners.length - 1 ? "border-b border-gray-700" : ""
+                index < friends.length - 1 ? "border-b border-gray-700" : ""
               }`}
             >
               <div className="flex items-center w-8">

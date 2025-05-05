@@ -1,21 +1,40 @@
 import { LightningBoltIcon } from "@/lib/icons";
 
-export default function ProfileHeader() {
+type ProfileHeaderProps = {
+  username: string;
+  profileImage: string;
+  swag: number;
+  showActions?: boolean;
+};
+
+export default function ProfileHeader({ username, profileImage, swag, showActions = false }: ProfileHeaderProps) {
   return (
     <header className="flex flex-col items-center pt-10 pb-4">
       <div className="w-28 h-28 rounded-full bg-gray-800 overflow-hidden mb-3 border-2 border-[#7C3AED]">
         <img 
-          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=200&h=200" 
-          alt="User profile" 
+          src={profileImage}
+          alt={`${username} profile`} 
           className="w-full h-full object-cover"
         />
       </div>
-      <h1 className="text-xl font-bold text-white">@daniel123</h1>
+      <h1 className="text-xl font-bold text-white">{username}</h1>
       
       <div className="flex items-center mt-3 px-4 py-2 bg-[#7C3AED] rounded-full">
         <LightningBoltIcon className="h-5 w-5 mr-1 text-yellow-300" />
-        <span className="text-white font-medium">240 Swag</span>
+        <span className="text-white font-medium">{swag} Swag</span>
       </div>
+
+      {/* Extra buttons */}
+      {showActions && (
+        <div className="mt-4 flex gap-4">
+          <button className="bg-white text-gray-900 font-medium px-4 py-2 rounded-lg hover:bg-gray-200 transition">
+            Message
+          </button>
+          <button className="bg-purple-600 text-white font-medium px-4 py-2 rounded-lg hover:bg-purple-500 transition">
+            Spotify Profile
+          </button>
+        </div>
+      )}
     </header>
   );
 }

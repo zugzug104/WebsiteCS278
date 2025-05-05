@@ -9,6 +9,7 @@ import ArtistDetail from "@/pages/ArtistDetail";
 import ExplorationDetail from "@/pages/ExplorationDetail";
 import Friends from "./pages/Friends";
 import ProfilePage from "./pages/ProfilePage";
+import FriendProfile from "./pages/FriendProfile";
 
 
 function Router() {
@@ -18,7 +19,7 @@ function Router() {
       <Route path="/artist/:id" component={ArtistDetail} />
       <Route path="/exploration/:id" component={ExplorationDetail} />
       <Route path="/friends" component={Friends} />
-      <Route path="/profile/:id" component={ProfilePage} />
+      <Route path="/profile/:id" component={FriendProfile} />
       <Route component={NotFound} />
     </Switch>
   );
