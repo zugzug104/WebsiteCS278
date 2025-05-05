@@ -7,6 +7,8 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import ArtistDetail from "@/pages/ArtistDetail";
 import ExplorationDetail from "@/pages/ExplorationDetail";
+import Friends from "./pages/Friends";
+
 
 function Router() {
   return (
@@ -14,6 +16,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/artist/:id" component={ArtistDetail} />
       <Route path="/exploration/:id" component={ExplorationDetail} />
+      <Route path="/friends" component={Friends} />
       <Route component={NotFound} />
     </Switch>
   );
