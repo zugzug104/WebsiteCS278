@@ -1,3 +1,18 @@
+type Artist = {
+  id: number;
+  name: string;
+  scrobbles: number;
+  imageUrl: string;
+};
+
+type Friend = {
+  id: number;
+  username: string;
+  swag: number;
+  profileImage: string;
+  topArtists: Artist[];
+};
+
 export const musicData = {
   user: {
     username: "@daniel123",
@@ -114,3 +129,8 @@ export const musicData = {
     // etc.
   ]
 };
+
+export function getArtistById(id: number) {
+  return [...musicData.topArtists, ...musicData.friends.flatMap(f => f.topArtists)]
+    .find(a => a.id === id);
+}

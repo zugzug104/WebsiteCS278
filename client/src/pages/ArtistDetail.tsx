@@ -1,6 +1,9 @@
 import { useRoute, useLocation } from "wouter";
 import { ArrowLeft } from "lucide-react";
 import { musicData } from "@/data/musicData";
+import { getArtistById } from "@/data/musicData";
+
+
 
 export default function ArtistDetail() {
   // Get the artist ID from the route
@@ -8,9 +11,11 @@ export default function ArtistDetail() {
   const [, setLocation] = useLocation();
   const artistId = params?.id ? parseInt(params.id) : null;
   
+  
   // Find the artist in our data
-  const artist = artistId ? 
-    musicData.topArtists.find(a => a.id === artistId) : null;
+  const artist = artistId ? getArtistById(artistId) : null;
+  const userArtist = musicData.topArtists.find(a => a.id === artist?.id);
+  const userScrobbles = userArtist?.scrobbles ?? 0;
   
   if (!artist) {
     return (
@@ -48,8 +53,8 @@ export default function ArtistDetail() {
           <div className="bg-gray-800 rounded-xl p-6 flex flex-col items-center">
             <p className="text-gray-400 mb-2">Your number of scrobbles</p>
             <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-              {artist.scrobbles.toLocaleString()}
-            </p>
+  {userScrobbles.toLocaleString()}
+</p>
           </div>
           
           <div className="bg-gray-800 rounded-xl p-6 flex flex-col items-center">
