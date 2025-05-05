@@ -55,13 +55,13 @@ export default function ExplorationZones() {
             {(zoneArtists[index] || []).map((artist, artistIndex) => {
               if (!artist) return null;
               
-              // Position artists to the sides and bottom of each zone
+              // Position artists to the sides of each zone
               // This ensures they don't overlap with zone titles in the center
               const positions = [
-                { right: '15%', top: '65%' },
-                { left: '15%', top: '65%' },
-                { right: '30%', top: '65%' },
-                { left: '30%', top: '65%' }
+                { right: '15%', top: '50%' },
+                { left: '15%', top: '50%' },
+                { right: '30%', top: '50%' },
+                { left: '30%', top: '50%' }
               ];
               
               // Use one of the predefined positions 
@@ -74,15 +74,22 @@ export default function ExplorationZones() {
               const animation = index === 4 ? "animate-pulse" : "";
               
               return (
-                <img 
+                <div
                   key={artist.id}
-                  src={artist.imageUrl}
-                  alt={artist.name}
-                  className={`absolute ${size} rounded-full border-2 border-white shadow-lg ${animation} cursor-pointer`}
-                  style={positionStyle}
-                  title={artist.name}
+                  className="absolute cursor-pointer"
+                  style={{
+                    ...positionStyle,
+                    transform: 'translate(0, -50%)'
+                  }}
                   onClick={() => setLocation(`/exploration/${artist.id}`)}
-                />
+                >
+                  <img 
+                    src={artist.imageUrl}
+                    alt={artist.name}
+                    className={`${size} rounded-full border-2 border-white shadow-lg ${animation}`}
+                    title={artist.name}
+                  />
+                </div>
               );
             })}
           </div>

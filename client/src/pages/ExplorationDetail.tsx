@@ -175,24 +175,35 @@ export default function ExplorationDetail() {
                     (zoneName === "Abyss" && (artistZone === "Abyss" || usersToDisplay.indexOf(user) >= 3))
                   )
                   .map((user, userIndex) => {
-                    // Position users in a semi-circle along the bottom part of the zone
-                    // This ensures they don't overlap with the zone titles at the center
-                    const totalUsers = zoneName === artistZone && artistZone !== "Abyss" ? 3 : 
-                                      (zoneName === "Abyss" && artistZone !== "Abyss" ? 3 : 5);
+                    // Position users along the sides of the zone
+                    // This ensures they don't overlap with zone titles
                     
-                    // Use a wider angle range (120 degrees instead of 180) 
-                    // and offset it to keep users in the bottom half of the zone
-                    const angleStart = 30; // Start at 30 degrees
-                    const angleEnd = 150; // End at 150 degrees
-                    const angle = angleStart + (userIndex / (totalUsers - 1)) * (angleEnd - angleStart);
+                    // Different positioning strategy based on which zone we're in
+                    let positions;
                     
-                    // Keep the radius the same but position users in bottom portion
-                    const radius = 35; // slightly smaller percentage of the zone width
+                    if (zoneName === "Abyss" && artistZone === "Abyss") {
+                      // If we're in Abyss with 5 users, use evenly spaced positions
+                      positions = [
+                        { left: '15%', top: '25%' },
+                        { right: '15%', top: '25%' },
+                        { left: '25%', top: '75%' },
+                        { right: '25%', top: '75%' },
+                        { left: '50%', top: '75%' },
+                      ];
+                    } else {
+                      // For other zones or when showing mix of abyss+current zone
+                      positions = [
+                        { left: '20%', top: '30%' },
+                        { right: '20%', top: '30%' },
+                        { left: '25%', top: '70%' },
+                        { right: '25%', top: '70%' },
+                        { left: '40%', top: '70%' },
+                        { right: '40%', top: '70%' },
+                      ];
+                    }
                     
-                    // Convert polar coordinates to cartesian
-                    // Adjust y position to be in bottom 70% of the zone
-                    const x = 50 - radius * Math.cos(angle * Math.PI / 180);
-                    const y = 65; // Position in bottom part of zone instead of center
+                    // Get position based on user index
+                    const positionStyle = positions[userIndex % positions.length];
                     
                     // Animation for abyss users
                     const animation = zoneName === "Abyss" ? "animate-pulse" : "";
@@ -201,11 +212,7 @@ export default function ExplorationDetail() {
                       <div 
                         key={user.id}
                         className={`absolute ${animation}`}
-                        style={{ 
-                          left: `${x}%`, 
-                          top: `${y}%`,
-                          transform: 'translate(-50%, -50%)'
-                        }}
+                        style={positionStyle}
                       >
                         <img 
                           src={user.profileImage}
