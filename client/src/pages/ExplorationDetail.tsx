@@ -178,24 +178,23 @@ export default function ExplorationDetail() {
                     // Position users along the sides of the zone
                     // This ensures they don't overlap with zone titles
                     
-                    // Simplified positioning strategy with just 3 positions per zone
-                    // These positions are carefully chosen to avoid overlapping zone titles
-                    // and to ensure all profiles stay within the screen boundaries
+                    // Position all profiles horizontally on the same line, to the sides of zone name
+                    // This ensures they're centered vertically and don't get cut off
                     let positions;
                     
                     if (zoneName === "Abyss") {
-                      // Position the 3 users in the Abyss zone in a triangular pattern
+                      // Position all 3 users in the Abyss zone horizontally
                       positions = [
-                        { left: '20%', top: '30%' },
-                        { right: '20%', top: '30%' },
-                        { left: '50%', top: '70%' },
+                        { left: '15%', top: '50%' },
+                        { right: '15%', top: '50%' },
+                        { right: '35%', top: '50%' },
                       ];
                     } else {
-                      // For other zones
+                      // For other zones - similar horizontal layout
                       positions = [
-                        { left: '25%', top: '30%' },
-                        { right: '25%', top: '30%' },
-                        { left: '50%', top: '70%' },
+                        { left: '20%', top: '50%' },
+                        { right: '20%', top: '50%' },
+                        { right: '40%', top: '50%' },
                       ];
                     }
                     
