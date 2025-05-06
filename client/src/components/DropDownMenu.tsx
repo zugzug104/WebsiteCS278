@@ -32,12 +32,12 @@ export default function DropDownMenu() {
             Friends
           </Link>
           <Link
-            href="/track-swap"
-            className="px-5 py-3 hover:bg-purple-100 text-gray-800"
-            onClick={() => setIsOpen(false)}
-          >
-            Track Swap
-          </Link>
+        to="/track-swap"
+        className="px-4 py-2 hover:bg-gray-100 text-black"
+        onClick={() => setIsOpen(false)}
+        >
+        Track Swap
+        </Link>
         </div>
       )}
     </div>

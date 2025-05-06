@@ -10,6 +10,7 @@ import ExplorationDetail from "@/pages/ExplorationDetail";
 import Friends from "./pages/Friends";
 import ProfilePage from "./pages/ProfilePage";
 import FriendProfile from "./pages/FriendProfile";
+import TrackSwap from "./pages/TrackSwap";
 
 
 function Router() {
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/exploration/:id" component={ExplorationDetail} />
       <Route path="/friends" component={Friends} />
       <Route path="/profile/:id" component={FriendProfile} />
+      <Route path="/track-swap" component={TrackSwap}/>
       <Route component={NotFound} />
     </Switch>
   );
