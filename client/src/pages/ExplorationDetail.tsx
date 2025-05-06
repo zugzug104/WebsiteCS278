@@ -1,6 +1,8 @@
 import { useRoute, useLocation } from "wouter";
 import { ArrowLeft } from "lucide-react";
 import { musicData } from "@/data/musicData";
+import { getArtistById } from "@/data/musicData";
+
 
 // Helper function to get the zone name based on artist position
 function getArtistZone(artistId: number): string {
@@ -91,8 +93,8 @@ export default function ExplorationDetail() {
   const artistId = params?.id ? parseInt(params.id) : null;
   
   // Find the artist in our data
-  const artist = artistId ? 
-    musicData.topArtists.find(a => a.id === artistId) : null;
+  const artist = artistId ? getArtistById(artistId) : null;
+
   
   if (!artist) {
     return (
