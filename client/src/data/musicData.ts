@@ -81,7 +81,13 @@ export const musicData = {
       username: "@basshead",
       scrobbles: 1289,
       profileImage: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=100&h=100"
-    }
+    },
+	{
+		id: 9,
+		username: "@daniel123",
+		scrobbles: 1240,
+		profileImage: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=200&h=200"
+	}
   ],
   friends: [
     {

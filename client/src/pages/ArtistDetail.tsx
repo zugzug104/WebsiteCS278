@@ -1,9 +1,25 @@
 import { useRoute, useLocation } from "wouter";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronRightIcon } from "lucide-react";
 import { musicData } from "@/data/musicData";
 import { getArtistById } from "@/data/musicData";
 
+const currentUser = musicData.user;
+const sortedListeners = [...musicData.topListeners].sort((a, b) => b.scrobbles - a.scrobbles);
 
+// Check if user is in the sorted list (could be via username or id depending on your structure)
+const userIndex = sortedListeners.findIndex(l => l.username === currentUser.username);
+
+let listenersToShow;
+
+if (userIndex >= 0 && userIndex < 5) {
+  // User is in top 5, show top 5 only
+  listenersToShow = sortedListeners.slice(0, 5);
+} else {
+  // User is not in top 5
+  const top5 = sortedListeners.slice(0, 5);
+  const userData = sortedListeners[userIndex];
+  listenersToShow = [...top5, { id: -1, username: "...", scrobbles: 0, profileImage: "" }, userData];
+}
 
 export default function ArtistDetail() {
   // Get the artist ID from the route
@@ -67,30 +83,52 @@ export default function ArtistDetail() {
         
         <div className="bg-gray-800 rounded-xl overflow-hidden">
           <div className="p-4 border-b border-gray-700">
-            <h3 className="text-lg font-medium">Top Listeners</h3>
+            <h3 className="text-lg font-medium">Top Listeners for Stanford</h3>
           </div>
           
-          {musicData.topListeners.map((listener, index) => (
-            <div 
-              key={listener.id} 
-              className={`flex items-center p-4 ${index < musicData.topListeners.length - 1 ? 'border-b border-gray-700' : ''}`}
-            >
-              <div className="flex items-center w-8">
-                <span className="font-bold text-white">{index + 1}</span>
-              </div>
-              <div className="flex-1 flex items-center">
-                <img 
-                  src={listener.profileImage}
-                  alt={listener.username} 
-                  className="h-10 w-10 rounded-full mr-3 object-cover"
-                />
-                <div className="flex-1">
-                  <div className="text-white font-medium">{listener.username}</div>
-                  <div className="text-gray-400 text-sm">{listener.scrobbles.toLocaleString()} scrobbles</div>
-                </div>
-              </div>
-            </div>
-          ))}
+		  {listenersToShow.map((listener, index) => {
+			if (listener.username === "...") {
+				return (
+				<div key="ellipsis" className="flex-1 flex items-center justify-center">
+					<div className="text-white text-4xl font-bold">...</div>
+				</div>
+				);
+			}
+
+			return (
+			<div 
+			key={listener.id} 
+			className={`flex items-center p-4 ${
+				index < listenersToShow.length - 1 ? 'border-b border-gray-700' : ''
+			} ${
+				listener.username === currentUser.username ? 'bg-sky-700/50' : ''
+			}`}
+			>
+				<div className="flex items-center w-8">
+					<span className="font-bold text-white">{index + 1}</span>
+				</div>
+				<div className="flex-1 flex items-center">
+					<img 
+					src={listener.profileImage}
+					alt={listener.username} 
+					className="h-10 w-10 rounded-full mr-3 object-cover"
+					/>
+					<div className="flex-1">
+					<div className="text-white font-medium">{listener.username}</div>
+					<div className="text-gray-400 text-sm">{listener.scrobbles.toLocaleString()} scrobbles</div>
+					</div>
+				<button
+                    className="text-gray-400 hover:text-white"
+                    onClick={() => setLocation(`/profile/${listener.id}`)}
+                    aria-label={`View ${listener.username} profile`}
+                >
+                <ChevronRightIcon className="h-5 w-5" />
+                </button>
+				</div>
+				</div>
+			);
+			})}
+		
         </div>
       </div>
     </div>

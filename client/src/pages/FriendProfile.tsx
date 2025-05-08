@@ -4,6 +4,8 @@ import ProfileHeader from "@/components/ProfileHeader";
 import TopArtists from "@/components/TopArtists";
 import ExplorationZones from "@/components/ExplorationZones"; // optional
 import DropDownMenu from "@/components/DropDownMenu";
+import { useState } from "react";
+
 
 
 export default function FriendProfile() {
@@ -16,19 +18,29 @@ export default function FriendProfile() {
   console.log("Friend ID from URL:", friendId);
 
   if (!friend) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
-        <p>Friend not found.</p>
-        <div
-          className="mt-4 flex items-center text-purple-400 hover:text-purple-300 cursor-pointer"
-          onClick={() => setLocation("/friends")}
-        >
-          ← Back to Friends
-        </div>
-      </div>
-    );
+	const [requestSent, setRequestSent] = useState(false);
+  
+	return (
+	  <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
+		<p className="text-lg mb-4">Friend not found.</p>
+  
+		<button
+		  onClick={() => setRequestSent(true)}
+		  className="px-4 py-2 mb-4 bg-purple-700 text-white rounded-xl hover:bg-purple-600 transition-colors"
+		  disabled={requestSent}
+		>
+		  {requestSent ? "Friend Request Sent!" : "Send Friend Request?"}
+		</button>
+  
+		<div
+		  className="text-purple-400 hover:text-purple-300 cursor-pointer"
+		  onClick={() => setLocation("/friends")}
+		>
+		  ← Back to Friends
+		</div>
+	  </div>
+	);
   }
-
   return (
     <div className="bg-gray-900 min-h-screen">
     <DropDownMenu />
