@@ -133,6 +133,43 @@ export const musicData = {
       ]
     }
     // etc.
+  ],
+  mockSongs: [
+    {
+      id: "1",
+      title: "Geyser",
+      artist: "Mitski",
+      albumArt: "https://i.scdn.co/image/ab67616d0000b273c428f67b4a9b7e1114dfc117",
+      trackLink: "https://open.spotify.com/track/2fCdOF4nBAeQaXW84WjoiU?si=eabcc63644a242e4"
+    },
+    {
+      id: "2",
+      title: "Old Friend",
+      artist: "Mitski",
+      albumArt: "https://i.scdn.co/image/ab67616d0000b273c428f67b4a9b7e1114dfc117",
+      trackLink: "https://open.spotify.com/track/6zg1bV9ESNLTmtB0Os3FA4?si=ca608260afa84068"
+    },
+    {
+      id: "3",
+      title: "A Pearl",
+      artist: "Mitski",
+      albumArt: "https://i.scdn.co/image/ab67616d0000b273c428f67b4a9b7e1114dfc117",
+      trackLink: "https://open.spotify.com/track/7fd3aMiuwHWKsTdZafjOfZ?si=4a4e263cf844435b"
+    },
+    {
+      id: "4",
+      title: "Lonesome Love",
+      artist: "Mitski",
+      albumArt: "https://i.scdn.co/image/ab67616d0000b273c428f67b4a9b7e1114dfc117",
+      trackLink: "https://open.spotify.com/track/3bjPPTMGBp8e36BYJaXDO2?si=79f7374fda224165"
+    },
+    {
+      id: "5",
+      title: "Nobody",
+      artist: "Mitski",
+      albumArt: "https://i.scdn.co/image/ab67616d0000b273c428f67b4a9b7e1114dfc117",
+      trackLink: "https://open.spotify.com/track/2P5yIMu2DNeMXTyOANKS6k?si=e682e41e91744ac3"
+    }
   ]
 };
 

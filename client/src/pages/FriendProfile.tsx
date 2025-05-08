@@ -48,7 +48,8 @@ export default function FriendProfile() {
         username={friend.username}
         profileImage={friend.profileImage}
         swag={friend.swag}
-        showActions={true} // adds Message + Spotify Profile buttons
+        showActions={true}
+        onMessageClick={() => setLocation(`/dm/${friend.id}`)}
       />
       <main className="max-w-md mx-auto px-4 pb-16">
         <TopArtists artists={friend.topArtists} />

@@ -11,6 +11,11 @@ import Friends from "./pages/Friends";
 import ProfilePage from "./pages/ProfilePage";
 import FriendProfile from "./pages/FriendProfile";
 import TrackSwap from "./pages/TrackSwap";
+import TrackSwapConfirmation from "./pages/TrackSwapConfirmation";
+import { SwapProvider } from "./context/SwapContext";
+import TrackSwapResults from "./pages/TrackSwapResults";
+import SwapPointsResults from "./pages/SwapPointsResults";
+import DirectMessage from "./pages/DirectMessage";
 
 
 function Router() {
@@ -22,6 +27,10 @@ function Router() {
       <Route path="/friends" component={Friends} />
       <Route path="/profile/:id" component={FriendProfile} />
       <Route path="/track-swap" component={TrackSwap}/>
+      <Route path="/track-swap-confirmation" component={TrackSwapConfirmation}/>
+      <Route path="/track-swap-results" component={TrackSwapResults}/>
+      <Route path="/swap-points-results" component={SwapPointsResults}/>
+      <Route path="/dm/:id" component={DirectMessage}/>
       <Route component={NotFound} />
     </Switch>
   );
@@ -32,7 +41,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <Router />
+        <SwapProvider>
+          <Router />
+        </SwapProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );
